@@ -1,105 +1,80 @@
-" setup
-nmap <F8> :TrinityToggleAll<CR>
-map <F2> :NERDTreeToggle<CR>
-let g:NERDTreeWinPos="left"
-map <s-F2> :MRU<CR>
-" Tag list
-map <F3> :TlistToggle<CR>
-" Update file
-" "map <F4> :up<CR>
-" Save all buffer files
-" "nmap <s-F4> :wall<CR>
-" Clear last used search hightlighting
-nnoremap <silent> <C-l> :nohl<CR><C-l>
-" AutoComple Open or close
-imap <F6> <ESC>:AutoComplPopDisable<CR>
-imap <s-F6> <ESC>:AutoComplPopEnable<CR>
-" Setup SrcExplToggle
-map <F7> :SrcExplToggle<CR>
-nnoremap <C-H> :Hexmode<CR>
-inoremap <C-H> <Esc>:Hexmode<CR>
-vnoremap <C-H> :<C-U>Hexmode<CR>
-source $VIMRUNTIME/menu.vim
-set wildmenu
-set cpo-=<
-set wcm=<C-Z>
-map <s-F3> :emenu <C-Z>
-" // The switch of the Source Explorer
-nmap <F4> :SrcExplToggle<CR>
-" // Set the height of Source Explorer window
-let g:SrcExpl_winHeight = 8
-" // Set 100 ms for refreshing the Source Explorer
-let g:SrcExpl_refreshTime = 100
-" // Set "Enter" key to jump into the exact definition context
-" let g:SrcExpl_jumpKey = "<ENTER>"
-" // Set "Space" key for back from the definition context
-let g:SrcExpl_gobackKey = "<SPACE>"
-" // In order to Avoid conflicts, the Source Explorer should know what plugins
-" // are using buffers. And you need add their bufname into the list below
-" // according to the command ":buffers!"
-let g:SrcExpl_pluginList = [
-       \ "__Tag_List__",
-       \ "_NERD_tree_",
-       \ "Source_Explorer"
-   \ ]
-" // Enable/Disable the local definition searching, and note that this is not
-" // guaranteed to work, the Source Explorer doesn't check the syntax for now.
-" // It only searches for a match with the keyword according to command 'gd'
-let g:SrcExpl_searchLocalDef = 1
-" // Do not let the Source Explorer update the tags file when opening
-let g:SrcExpl_isUpdateTags = 0
-" // Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to
-" //  create/update a tags file
-let g:SrcExpl_updateTagsCmd = "exctags --sort=foldcase -R ."
-" // Set "<s-F4>" key for updating the tags file artificially
-let g:SrcExpl_updateTagsKey = "<s-F4>"
-"  Buffer Explorer / Browser key
-"  '\be' (normal open)  or
-"  '\bs' (force horizontal split open)  or
-"  '\bv' (force vertical split open)
-cmap   <c-a>   <home>
-cmap   <c-e>   <end>
-cnoremap   <c-b>   <left>
-cnoremap   <c-d>   <del>
-cnoremap   <c-f>   <right>
-cnoremap   <c-n>   <down>
-cnoremap   <c-p>   <up>
-cnoremap   <esc><c-b>  <s-left>
-cnoremap   <esc><c-f>  <s-right>
-map tn :tabnext<CR>
-map tp :tabprev<CR>
-map te :tabnew 
-map tc :tabclose<CR>
-nmap <tab> v>
-nmap <s-tab> v<
-vmap <tab> >gv
-vmap <s-tab> <gv
-nnoremap <A-j> :m+<CR>==
-nnoremap <A-k> :m-2<CR>==
-inoremap <A-j> <Esc>:m+<CR>==gi
-inoremap <A-k> <Esc>:m-2<CR>==gi
-vnoremap <A-j> :m'>+<CR>gv=gv
-vnoremap <A-k> :m-2<CR>gv=gv
-inoremap ( ()<LEFT>
-inoremap [ []<LEFT>
-inoremap { {}<LEFT>
-inoremap ' ''<LEFT>
-inoremap " ""<LEFT>
-        
-"if &term =~ "xterm"
-"    set t_Co=256
-"    if has("terminfo")
-"        let &t_Sf=nr2char(27).'[3%p1%dm'
-"        let &t_Sb=nr2char(27).'[4%p1%dm'
-"    else
-"        let &t_Sf=nr2char(27).'[3%dm'
-"        let &t_Sb=nr2char(27).'[4%dm'
-"    endif
-"    colorscheme desert256
-"endif
-"set background=dark
-" colors darkblue
-set nocompatible
+" VIM setting
+" Abner Chen
+
+"------------------------------------------------------------------------------
+" Install vundle automatically
+" http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/
+"------------------------------------------------------------------------------
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle.."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    let iCanHazVundle=0
+endif
+
+
+"------------------------------------------------------------------------------
+" Vundle setting.
+" https://github.com/gmarik/Vundle.vim
+"------------------------------------------------------------------------------
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'scrooloose/nerdtree'
+"Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'bling/vim-airline'
+Plugin 'Lokaltog/vim-easymotion'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList          - list configured plugins
+" :PluginInstall(!)    - install (update) plugins
+" :PluginSearch(!) foo - search (or refresh cache first) for foo
+" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"------------------------------------------------------------------------------
+" Install plugins automatically
+"------------------------------------------------------------------------------
+if iCanHazVundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :PluginInstall
+    :qall
+endif
+
+"------------------------------------------------------------------------------
+" General Settings
+"------------------------------------------------------------------------------
+" auto reload vimrc when editing it
+autocmd! bufwritepost .vimrc source ~/.vimrc
+
+filetype off          " necessary to make ftdetect work on Linux
+syntax on
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+
+set nocompatible      " not compatible with the old-fashion vi mode
 " Set mouse
 set mouse=a
 syntax on
@@ -129,6 +104,69 @@ set cmdheight=2
 set laststatus=2
 set cursorline
 set backspace=2
+set colorcolumn=80
+set wildmenu
+set cpo-=<
+set wcm=<C-Z>
+set fencs=utf-8,big5,bgk,euc-jp,utf-16le
+set fenc=utf-8
+set enc=utf-8
+set tenc=utf-8
+set foldmethod=indent
+set foldnestmax=5
+set formatoptions=mtcql
+set t_Co=256
+colorscheme desert256
+
+"------------------------------------------------------------------------------
+" Key Mapping
+"
+" Commands                        Mode
+" --------                        ----
+" nmap, nnoremap, nunmap          Normal mode
+" imap, inoremap, iunmap          Insert and Replace mode
+" vmap, vnoremap, vunmap          Visual and Select mode
+" xmap, xnoremap, xunmap          Visual mode
+" smap, snoremap, sunmap          Select mode
+" cmap, cnoremap, cunmap          Command-line mode
+" omap, onoremap, ounmap          Operator pending mode
+"------------------------------------------------------------------------------
+map tn :tabnext<CR>
+map tp :tabprev<CR>
+map te :tabnew 
+map tc :tabclose<CR>
+map vs :vsplit 
+
+nmap <tab> v>
+nmap <s-tab> v<
+nnoremap <A-j> :m+<CR>==
+nnoremap <A-k> :m-2<CR>==
+nnoremap <space> za
+
+inoremap <A-j> <Esc>:m+<CR>==gi
+inoremap <A-k> <Esc>:m-2<CR>==gi
+inoremap ( ()<LEFT>
+inoremap [ []<LEFT>
+inoremap { {}<LEFT>
+inoremap ' ''<LEFT>
+inoremap " ""<LEFT>
+
+vmap <tab> >gv
+vmap <s-tab> <gv
+vnoremap <A-j> :m'>+<CR>gv=gv
+vnoremap <A-k> :m-2<CR>gv=gv
+vnoremap <space> zf
+
+cmap       <c-a>   <home>
+cmap       <c-e>   <end>
+cnoremap   <c-b>   <left>
+cnoremap   <c-d>   <del>
+cnoremap   <c-f>   <right>
+cnoremap   <c-n>   <down>
+cnoremap   <c-p>   <up>
+cnoremap   <esc><c-b>  <s-left>
+cnoremap   <esc><c-f>  <s-right>
+
 autocmd! BufWritePost .vimrc source %
 autocmd! BufWritePost .gvimrc source %
 autocmd! BufWritePost _vimrc source %
@@ -146,16 +184,11 @@ highlight User6 ctermfg=white
 "set statusline=%4*%<\ %1*[%F]
 "set statusline+=%4*\ %5*[%{&encoding}, " encoding
 "set statusline+=%{&fileformat}]%m " file formatoptions
-set fencs=utf-8,big5,bgk,euc-jp,utf-16le
-set fenc=utf-8
-set enc=utf-8
-set tenc=utf-8
-set foldmethod=indent
-set foldnestmax=2
-nnoremap <space> za
-vnoremap <space> zf
-set formatoptions=mtcql
-hi Comment ctermfg=Green
+
+"------------------------------------------------------------------------------
+" Programming
+"------------------------------------------------------------------------------
+
 " taglist config
 let Tlist_Use_Right_Window=1
 let Tlist_File_Fold_Auto_Close=1
@@ -178,26 +211,14 @@ au BufRead,BufNewFile *.py setlocal tags+=~/.vim/tags/python
 " c autotidy by indent
 autocmd FileType c :set equalprg=indent
 " Folding : http://vim.wikia.com/wiki/Syntax-based_folding see comment by Ostrygen
-au FileType cs set omnifunc=syntaxcomplete#Complete 
-au FileType cs set foldmethod=marker 
-au FileType cs set foldmarker={,} 
-au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
-au FileType cs set foldlevelstart=2 
-" Quickfix mode: command line msbuild error format 
+au FileType cs set omnifunc=syntaxcomplete#Complete
+au FileType cs set foldmethod=marker
+au FileType cs set foldmarker={,}
+au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
+au FileType cs set foldlevelstart=2
+" Quickfix mode: command line msbuild error format
 au FileType cs set errorformat=\ %#%f(%l\\\,%c):\ error\ CS%n:\ %m
 
-" clever tab completion
-"fun! KeywordComplete()
-"   let left = strpart(getline('.'), col('.') - 2, 1)
-"   if left =~ "^$"
-"       return "\<Tab>"
-"   elseif
-"       left =~ ' $'
-"       return "\<Tab>"
-"   else
-"       return "\<C-N>"
-"endfun
-"inoremap <silent> <Tab> <C-R>=KeywordComplete()
 fun! OmniComplete()
    let left = strpart(getline('.'), col('.') - 2, 1)
    if left =~ "^$"
@@ -208,75 +229,20 @@ fun! OmniComplete()
    return "\<C-x>\<C-o>"
 endfun
 inoremap <silent> <S-Tab> <C-R>=OmniComplete()
-" ex command for toggling hex mode - define mapping if desired
-"command -bar Hexmode call ToggleHex()
-" helper function to toggle hex mode
-function! ToggleHex()
-   " hex mode should be considered a read-only operation
-   " save values for modified and read-only for restoration later,
-   " and clear the read-only flag for now
-   let l:modified=&mod
-   let l:oldreadonly=&readonly
-   let &readonly=0
-   let l:oldmodifiable=&modifiable
-   let &modifiable=1
-   if !exists("b:editHex") || !b:editHex
-       " save old options
-       let b:oldft=&ft
-       let b:oldbin=&bin
-       " set new options
-       setlocal binary " make sure it overrides any textwidth, etc.
-       let &ft="xxd"
-       " set status
-       let b:editHex=1
-       " switch to hex editor
-       %!xxd
-   else
-       " restore old options
-       let &ft=b:oldft
-       if !b:oldbin
-           setlocal nobinary
-       endif
-       " set status
-       let b:editHex=0
-       " return to normal editing
-       %!xxd -r
-   endif
-   " restore values for modified and read only state
-   let &mod=l:modified
-   let &readonly=l:oldreadonly
-   let &modifiable=l:oldmodifiable
-endfunction
-set diffexpr=MyDiff()
-function! MyDiff()
- let opt = '-a --binary '
- if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
- if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
- let arg1 = v:fname_in
- if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
- let arg2 = v:fname_new
- if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
- let arg3 = v:fname_out
- if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
- let eq = ''
- if $VIMRUNTIME =~ ' '
-   if &sh =~ '\<cmd'
-     let cmd = '""' . $VIMRUNTIME . '\diff"'
-     let eq = '"'
-   else
-     let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-   endif
- else
-   let cmd = $VIMRUNTIME . '\diff'
- endif
- silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
-" Smooth scrolling
-map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
-map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 
-
-" vim: ts=2:
-
-set t_Co=256
-colorscheme desert256
+"------------------------------------------------------------------------------
+" vim-airline
+"------------------------------------------------------------------------------
+let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
