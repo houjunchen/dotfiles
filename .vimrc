@@ -54,8 +54,14 @@ Plugin 'Lokaltog/vim-easymotion'
 " Find revision ID from a Mercurial repo
 "Plugin 'vim-scripts/hgrev'
 
+" Git wrapper for Vim
+Plugin 'tpope/vim-fugitive'
+
 " Mercurial wrapper for Vim
 Plugin 'ludovicchabant/vim-lawrencium'
+
+" Solarized colorscheme
+Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -137,7 +143,10 @@ set foldnestmax=5
 set formatoptions=mtcql
 set scrolloff=2
 set t_Co=256
-colorscheme desert256
+"colorscheme desert256
+set background=dark
+colorscheme solarized
+set noerrorbells visualbell t_vb=
 
 "------------------------------------------------------------------------------
 " Key Mapping
@@ -251,7 +260,7 @@ au FileType cs set errorformat=\ %#%f(%l\\\,%c):\ error\ CS%n:\ %m
 "------------------------------------------------------------------------------
 " vim-airline
 "------------------------------------------------------------------------------
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'solarized'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
@@ -260,7 +269,6 @@ let g:airline#extensions#syntastic#enabled = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-"let g:airline_section_b="%{HGRev()?'[r'.HGRev().']':''}"
 
 "------------------------------------------------------------------------------
 " vim-indent-guides
@@ -268,8 +276,6 @@ endif
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-"highlight IndentGuidesOdd  ctermbg = black
-"highlight IndentGuidesEven ctermbg = darkgrey
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 
