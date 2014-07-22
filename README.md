@@ -10,13 +10,19 @@ Author: Abner Chen <houjuncehn@gmail.com>
 
 2. Setup
 
-    1. Check out from github
+    1. Check out vimrc from [github]
 
         ```
-        git clone git://github.com/houjunchen/vimrc.git ~/.vim
+        git clone https://github.com/houjunchen/vimrc.git ~/.vim
         ```
 
-    2. Make a symbolic link
+    2. Check out [Vundle] from [github]
+
+        ```
+        git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+        ```
+
+    3. Make a symbolic link
 
         ```
         ln -s ~/.vim/vimrc ~/.vimrc
