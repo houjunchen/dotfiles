@@ -10,13 +10,13 @@ Author: Abner Chen <houjuncehn@gmail.com>
 
 2. Setup
 
-    1. Check out vimrc from [github]
+    1. Check out vimrc
 
         ```
         git clone https://github.com/houjunchen/vimrc.git ~/.vim
         ```
 
-    2. Check out [Vundle] from [github]
+    2. Check out [Vundle]
 
         ```
         git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
