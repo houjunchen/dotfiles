@@ -1,20 +1,31 @@
 " VIM setting
 " Abner Chen
 
+let $LANG = 'en'
+set langmenu=en     "set menu's language of gvim. no spaces beside '='
+
 "------------------------------------------------------------------------------
 " Install vundle automatically
 " http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/
 "------------------------------------------------------------------------------
 let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
+if has("unix")
+    let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
+elseif has("win32")
+    let vundle_readme=expand('~/vimfiles/bundle/Vundle.vim/README.md')
+endif
 if !filereadable(vundle_readme)
     echo "Installing Vundle.."
     echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    if has("unix")
+        silent !mkdir -p ~/.vim/bundle
+        !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    elseif has("win32")
+        silent !mkdir \%USERPROFILE\%\vimfiles\bundle
+        !git clone https://github.com/gmarik/Vundle.vim.git \%USERPROFILE\%/vimfiles/bundle/Vundle.vim
+    endif
     let iCanHazVundle=0
 endif
-
 
 "------------------------------------------------------------------------------
 " Vundle setting.
@@ -24,8 +35,14 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if has("unix")
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+else
+    set rtp+=~/vimfiles/bundle/Vundle.vim/
+    let path='~/vimfiles/bundle'
+    call vundle#begin(path)
+endif
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -91,8 +108,6 @@ endif
 "------------------------------------------------------------------------------
 " General Settings
 "------------------------------------------------------------------------------
-" auto reload vimrc when editing it
-autocmd! bufwritepost .vimrc source ~/.vimrc
 
 filetype off          " necessary to make ftdetect work on Linux
 syntax on
@@ -134,19 +149,25 @@ set colorcolumn=80
 set wildmenu
 set cpo-=<
 set wcm=<C-Z>
-set fencs=utf-8,big5,bgk,euc-jp,utf-16le
-set fenc=utf-8
-set enc=utf-8
-set tenc=utf-8
 set foldmethod=indent
 set foldnestmax=5
 set formatoptions=mtcql
 set scrolloff=2
 set t_Co=256
-"colorscheme desert256
 set background=dark
 colorscheme solarized
 set noerrorbells visualbell t_vb=
+set encoding=utf-8
+
+if has("gui_running")
+    if has("gui_gtk2")
+        set guifont=Inconsolata\ 12
+    elseif has("gui_macvim")
+        set guifont=Menlo\ Regular:h14
+    elseif has("gui_win32")
+        set guifont=Source_Code_Pro_Medium:h12:cANSI
+    endif
+endif
 
 "------------------------------------------------------------------------------
 " Key Mapping
