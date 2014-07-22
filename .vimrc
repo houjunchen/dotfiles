@@ -30,12 +30,38 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" Visually displaying indent levels in Vim
 Plugin 'nathanaelkane/vim-indent-guides'
+
+" File system explorer
 Plugin 'scrooloose/nerdtree'
-"Plugin 'kien/ctrlp.vim'
+
+" Syntax checking for Vim
+Plugin 'scrooloose/syntastic'
+
+" Source code tag browser
 Plugin 'majutsushi/tagbar'
+
+" Lean and mean status/tabline for Vim that's light as air
 Plugin 'bling/vim-airline'
+
+" Full path fuzzy file, buffer, mru, tag, ... finder for Vim
+Plugin 'kien/ctrlp.vim'
+
+" Motion enhancement
 Plugin 'Lokaltog/vim-easymotion'
+
+" Find revision ID from a Mercurial repo
+"Plugin 'vim-scripts/hgrev'
+
+" Git wrapper for Vim
+Plugin 'tpope/vim-fugitive'
+
+" Mercurial wrapper for Vim
+Plugin 'ludovicchabant/vim-lawrencium'
+
+" Solarized colorscheme
+Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -83,9 +109,9 @@ set autowrite
 set number
 " Show command line
 set showcmd
+set showmode
 set lcs=tab:>-,trail:-
 set list
-set showmode
 set nobackup
 "set title
 set tabstop=4
@@ -115,8 +141,12 @@ set tenc=utf-8
 set foldmethod=indent
 set foldnestmax=5
 set formatoptions=mtcql
+set scrolloff=2
 set t_Co=256
-colorscheme desert256
+"colorscheme desert256
+set background=dark
+colorscheme solarized
+set noerrorbells visualbell t_vb=
 
 "------------------------------------------------------------------------------
 " Key Mapping
@@ -189,9 +219,6 @@ highlight User6 ctermfg=white
 " Programming
 "------------------------------------------------------------------------------
 
-" taglist config
-let Tlist_Use_Right_Window=1
-let Tlist_File_Fold_Auto_Close=1
 autocmd FileType c set ofu=ccomplete#Complete
 autocmd FileType cpp set ofu=cppcomplete#Complete
 autocmd FileType php set ofu=phpcomplete#CompletePHP
@@ -219,30 +246,60 @@ au FileType cs set foldlevelstart=2
 " Quickfix mode: command line msbuild error format
 au FileType cs set errorformat=\ %#%f(%l\\\,%c):\ error\ CS%n:\ %m
 
-fun! OmniComplete()
-   let left = strpart(getline('.'), col('.') - 2, 1)
-   if left =~ "^$"
-   return ""
-   elseif left =~ ' $'
-   return ""
-   else
-   return "\<C-x>\<C-o>"
-endfun
-inoremap <silent> <S-Tab> <C-R>=OmniComplete()
+""fun! OmniComplete()
+""   let left = strpart(getline('.'), col('.') - 2, 1)
+""   if left =~ "^$"
+""   return ""
+""   elseif left =~ ' $'
+""   return ""
+""   else
+""   return "\<C-x>\<C-o>"
+""endfun
+""inoremap <silent> <S-Tab> <C-R>=OmniComplete()
 
 "------------------------------------------------------------------------------
 " vim-airline
 "------------------------------------------------------------------------------
-let g:airline_theme='powerlineish'
+let g:airline_theme = 'solarized'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+
+"------------------------------------------------------------------------------
+" vim-indent-guides
+"------------------------------------------------------------------------------
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
+
+"------------------------------------------------------------------------------
+" CtrlP
+"------------------------------------------------------------------------------
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+"------------------------------------------------------------------------------
+" tagbar
+"------------------------------------------------------------------------------
+nnoremap <silent> <F9> :TagbarToggle<CR>
+
+"------------------------------------------------------------------------------
+" nerdtree
+"------------------------------------------------------------------------------
+map <F8> :NERDTreeToggle<CR>
+let g:NERDTreeWinPos = "left"
+let NERDTreeDirArrows = 1
+
+"------------------------------------------------------------------------------
+" syntastic
+"------------------------------------------------------------------------------
+""let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_python_checkers = ['python']
