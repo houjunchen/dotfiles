@@ -16,13 +16,7 @@ Author: Abner Chen <houjuncehn@gmail.com>
         git clone https://github.com/houjunchen/vimrc.git ~/.vim
         ```
 
-    2. Check out [Vundle]
-
-        ```
-        git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-        ```
-
-    3. Make a symbolic link
+    2. Make a symbolic link
 
         ```
         ln -s ~/.vim/vimrc ~/.vimrc
