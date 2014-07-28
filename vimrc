@@ -182,41 +182,50 @@ endif
 " cmap, cnoremap, cunmap          Command-line mode
 " omap, onoremap, ounmap          Operator pending mode
 "------------------------------------------------------------------------------
-map tn :tabnext<CR>
-map tp :tabprev<CR>
-map te :tabnew 
-map tc :tabclose<CR>
-map vs :vsplit 
+map tn              :tabnext<CR>
+map tp              :tabprev<CR>
+map te              :tabnew 
+map tc              :tabclose<CR>
+map vs              :vsplit 
 
-nmap <tab> v>
-nmap <s-tab> v<
-nnoremap <A-j> :m+<CR>==
-nnoremap <A-k> :m-2<CR>==
-nnoremap <space> za
+nmap <Tab>          v>
+nmap <S-tab>        v<
+nnoremap <A-J>      :m+<CR>==
+nnoremap <A-K>      :m-2<CR>==
+nnoremap <Space>    za
 
-inoremap <A-j> <Esc>:m+<CR>==gi
-inoremap <A-k> <Esc>:m-2<CR>==gi
-inoremap ( ()<LEFT>
-inoremap [ []<LEFT>
-inoremap { {}<LEFT>
-inoremap ' ''<LEFT>
-inoremap " ""<LEFT>
+inoremap <A-J>      <Esc>:m+<CR>==gi
+inoremap <A-K>      <Esc>:m-2<CR>==gi
+inoremap (          ()<Left>
+inoremap [          []<Left>
+inoremap {          {}<Left>
+inoremap '          ''<Left>
+inoremap "          ""<Left>
 
-vmap <tab> >gv
-vmap <s-tab> <gv
-vnoremap <A-j> :m'>+<CR>gv=gv
-vnoremap <A-k> :m-2<CR>gv=gv
-vnoremap <space> zf
+vmap <Tab>          >gv
+vmap <S-Tab>        <gv
+vnoremap <A-J>      :m'>+<CR>gv=gv
+vnoremap <A-K>      :m-2<CR>gv=gv
+vnoremap <Space>    zf
 
-cmap       <c-a>   <home>
-cmap       <c-e>   <end>
-cnoremap   <c-b>   <left>
-cnoremap   <c-d>   <del>
-cnoremap   <c-f>   <right>
-cnoremap   <c-n>   <down>
-cnoremap   <c-p>   <up>
-cnoremap   <esc><c-b>  <s-left>
-cnoremap   <esc><c-f>  <s-right>
+cmap <C-A>          <Home>
+cmap <C-E>          <End>
+cnoremap <C-B>      <Left>
+cnoremap <C-D>      <Del>
+cnoremap <C-F>      <Right>
+cnoremap <C-N>      <Down>
+cnoremap <C-P>      <Up>
+cnoremap <Esc><C-B> <S-Left>
+cnoremap <Esc><C-F> <S-Right>
+
+if has("gui_running")
+    " paste
+    map <C-V>       "+gP
+    " cut
+    vnoremap <C-X>  "+x
+    " copy
+    vnoremap <C-C>  "+y
+endif
 
 autocmd! BufWritePost .vimrc source %
 autocmd! BufWritePost .gvimrc source %
@@ -229,12 +238,6 @@ highlight User3 term=underline cterm=underline ctermfg=yellow
 highlight User4 term=underline cterm=underline ctermfg=white
 highlight User5 ctermfg=cyan
 highlight User6 ctermfg=white
-" %1* -> User1's highlight, %2*->User2's highlight
-" =   -> Separation point between left and right aligned items.
-" <   -> Where to truncate line if too long.  Default is at the start.
-"set statusline=%4*%<\ %1*[%F]
-"set statusline+=%4*\ %5*[%{&encoding}, " encoding
-"set statusline+=%{&fileformat}]%m " file formatoptions
 
 "------------------------------------------------------------------------------
 " Programming
@@ -266,17 +269,6 @@ au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
 au FileType cs set foldlevelstart=2
 " Quickfix mode: command line msbuild error format
 au FileType cs set errorformat=\ %#%f(%l\\\,%c):\ error\ CS%n:\ %m
-
-""fun! OmniComplete()
-""   let left = strpart(getline('.'), col('.') - 2, 1)
-""   if left =~ "^$"
-""   return ""
-""   elseif left =~ ' $'
-""   return ""
-""   else
-""   return "\<C-x>\<C-o>"
-""endfun
-""inoremap <silent> <S-Tab> <C-R>=OmniComplete()
 
 "------------------------------------------------------------------------------
 " vim-airline
