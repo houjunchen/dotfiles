@@ -56,6 +56,15 @@ Plugin 'scrooloose/nerdtree'
 " Syntax checking for Vim
 Plugin 'scrooloose/syntastic'
 
+" A fast, as-you-type, fuzzy-search code completion engine
+" no official windows support
+" Compiling YCM wit semantic support for C-family languages:
+"   cd ~/.vim/bundle/YouCompleteMe/
+"   ./install.sh --clang-completer
+if !has("win32")
+    Plugin 'Valloric/YouCompleteMe'
+endif
+
 " Source code tag browser
 Plugin 'majutsushi/tagbar'
 
@@ -67,9 +76,6 @@ Plugin 'kien/ctrlp.vim'
 
 " Motion enhancement
 Plugin 'Lokaltog/vim-easymotion'
-
-" Find revision ID from a Mercurial repo
-"Plugin 'vim-scripts/hgrev'
 
 " Git wrapper for Vim
 Plugin 'tpope/vim-fugitive'
