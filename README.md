@@ -38,6 +38,8 @@ Author: Abner Chen <houjuncehn@gmail.com>
 
 * [Syntastic]: Syntax checking for Vim
 
+* [YouCompleteMe]: A fast, as-you-type, fuzzy-search code completion engine
+
 * [Tagbar]: Source code tag browser
 
 * [Airline]: Lean and mean status/tabline for Vim that's light as air
@@ -66,3 +68,4 @@ Author: Abner Chen <houjuncehn@gmail.com>
 [Fugitive]:https://github.com/tpope/vim-fugitive
 [Lawrencium]:https://github.com/ludovicchabant/vim-lawrencium
 [Solarized]:https://github.com/altercation/vim-colors-solarized
+[YouCompleteMe]:https://github.com/Valloric/YouCompleteMe
