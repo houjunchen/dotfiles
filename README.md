@@ -1,6 +1,6 @@
 ## [Abner's vimrc](https://github.com/houjunchen/vimrc)
 
-Author: Abner Chen <houjuncehn@gmail.com>
+Author: Abner Chen <houjunchen@gmail.com>
 
 ## Install
 
