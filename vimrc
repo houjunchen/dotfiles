@@ -161,9 +161,10 @@ set formatoptions=mtcql
 set scrolloff=2
 set t_Co=256
 set background=dark
-colorscheme solarized
 set noerrorbells visualbell t_vb=
 set encoding=utf-8
+
+colorscheme solarized
 
 if has("gui_running")
     if has("gui_gtk2")
@@ -322,3 +323,10 @@ let NERDTreeDirArrows = 1
 ""let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_python_checkers = ['python']
+
+"------------------------------------------------------------------------------
+" YouCompleteMe
+"------------------------------------------------------------------------------
+let g:ycm_complete_in_comments = 1
+set completeopt-=preview
+let g:ycm_seed_identifiers_with_syntax = 1
