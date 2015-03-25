@@ -170,7 +170,7 @@ if has("gui_running")
     if has("gui_gtk2")
         set guifont=Inconsolata\ 12
     elseif has("gui_macvim")
-        set guifont=Menlo\ Regular:h14
+        set guifont=Source_Code_Pro_Medium:h14
     elseif has("gui_win32")
         set guifont=Source_Code_Pro_Medium:h12:cANSI
     endif
@@ -304,6 +304,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 "------------------------------------------------------------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 "------------------------------------------------------------------------------
 " tagbar
