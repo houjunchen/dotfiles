@@ -86,6 +86,15 @@ Plugin 'ludovicchabant/vim-lawrencium'
 " Solarized colorscheme
 Plugin 'altercation/vim-colors-solarized'
 
+" Tools and environment to make Vim superb for developing with Node.js.
+Plugin 'moll/vim-node'
+
+" Insert mode auto-completion for quotes, parens, brackets, etc.
+Plugin 'Raimondi/delimitMate'
+
+" Vim syntax file for Docker's Dockerfile and snippets for snipMate.
+Plugin 'ekalinin/Dockerfile.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -203,11 +212,6 @@ nnoremap <Space>    za
 
 inoremap <A-J>      <Esc>:m+<CR>==gi
 inoremap <A-K>      <Esc>:m-2<CR>==gi
-inoremap (          ()<Left>
-inoremap [          []<Left>
-inoremap {          {}<Left>
-inoremap '          ''<Left>
-inoremap "          ""<Left>
 
 vmap <Tab>          >gv
 vmap <S-Tab>        <gv
