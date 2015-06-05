@@ -173,6 +173,10 @@ set background=dark
 set noerrorbells visualbell t_vb=
 set encoding=utf-8
 
+" change cursor shape for insert mode
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
 colorscheme solarized
 
 if has("gui_running")
