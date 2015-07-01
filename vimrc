@@ -152,12 +152,9 @@ set smartindent
 set expandtab
 set shiftwidth=4
 set smarttab
-set fdm=indent
-set fdc=4
 set wrap
 set hlsearch
 set incsearch
-set cmdheight=2
 set laststatus=2
 set cursorline
 set backspace=2
