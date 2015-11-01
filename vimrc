@@ -48,7 +48,7 @@ endif
 Plugin 'gmarik/Vundle.vim'
 
 " Visually displaying indent levels in Vim
-Plugin 'nathanaelkane/vim-indent-guides'
+"Plugin 'nathanaelkane/vim-indent-guides'
 
 " File system explorer
 Plugin 'scrooloose/nerdtree'
@@ -61,9 +61,9 @@ Plugin 'scrooloose/syntastic'
 " Compiling YCM wit semantic support for C-family languages:
 "   cd ~/.vim/bundle/YouCompleteMe/
 "   ./install.sh --clang-completer
-if !has("win32")
-    Plugin 'Valloric/YouCompleteMe'
-endif
+"if !has("win32")
+"    Plugin 'Valloric/YouCompleteMe'
+"endif
 
 " Source code tag browser
 Plugin 'majutsushi/tagbar'
@@ -72,16 +72,13 @@ Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " Motion enhancement
 Plugin 'Lokaltog/vim-easymotion'
 
 " Git wrapper for Vim
 Plugin 'tpope/vim-fugitive'
-
-" Mercurial wrapper for Vim
-Plugin 'ludovicchabant/vim-lawrencium'
 
 " Solarized colorscheme
 Plugin 'altercation/vim-colors-solarized'
@@ -94,6 +91,18 @@ Plugin 'Raimondi/delimitMate'
 
 " Vim syntax file for Docker's Dockerfile and snippets for snipMate.
 Plugin 'ekalinin/Dockerfile.vim'
+
+" Search tool
+Plugin 'mileszs/ack.vim'
+
+" Vim as Python IDE
+Plugin 'klen/python-mode'
+
+" VIM binding to the autocompletion library Jedi
+" Plugin 'davidhalter/jedi-vim'
+
+" To comply with PEP8
+" Plugin 'hynek/vim-python-pep8-indent'
 
 
 " All of your Plugins must be added before the following line
@@ -143,17 +152,25 @@ set showcmd
 set showmode
 set lcs=tab:>-,trail:-
 set list
+
+" Backups
 set nobackup
-"set title
-set tabstop=4
+set noswapfile
+
+" Always show current position
 set ruler
+
+set expandtab
+set smarttab
+set tabstop=4
+set shiftwidth=4
 set autoindent
 set smartindent
-set expandtab
-set shiftwidth=4
-set smarttab
 set wrap
+
+" Highlight search results
 set hlsearch
+" Makes search act like search in modern browsers
 set incsearch
 set laststatus=2
 set cursorline
@@ -168,8 +185,14 @@ set formatoptions=mtcql
 set scrolloff=2
 set t_Co=256
 set background=dark
-set noerrorbells visualbell t_vb=
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+
 set encoding=utf-8
+set clipboard=unnamed
 
 " change cursor shape for insert mode
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -240,49 +263,6 @@ if has("gui_running")
     vnoremap <C-C>  "+y
 endif
 
-autocmd! BufWritePost .vimrc source %
-autocmd! BufWritePost .gvimrc source %
-autocmd! BufWritePost _vimrc source %
-autocmd! BufWritePost _gvimrc source %
-au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-highlight User1 ctermfg=red
-highlight User2 term=underline cterm=underline ctermfg=green
-highlight User3 term=underline cterm=underline ctermfg=yellow
-highlight User4 term=underline cterm=underline ctermfg=white
-highlight User5 ctermfg=cyan
-highlight User6 ctermfg=white
-
-"------------------------------------------------------------------------------
-" Programming
-"------------------------------------------------------------------------------
-
-autocmd FileType c set ofu=ccomplete#Complete
-autocmd FileType cpp set ofu=cppcomplete#Complete
-autocmd FileType php set ofu=phpcomplete#CompletePHP
-autocmd FileType python set ofu=pythoncomplete#Complete
-autocmd FileType javascript set ofu=javascriptcomplete#CompleteJS
-autocmd FileType html set ofu=htmlcomplete#CompleteTags
-autocmd FileType css set ofu=csscomplete#CompleteCSS
-autocmd FileType xml set ofu=xmlcomplete#CompleteTags
-" tags config
-""set tags=./.tags,.tags;${HOME}
-set tags=./tags;${HOME}
-""set tags+=/usr/local/include/tags
-""set tags+=/usr/inlcude/tags
-au BufRead,BufNewFile *.cpp,*.h,*.c setlocal tags+=~/.vim/tags/usr_include
-au BufRead,BufNewFile *.cpp,*.h,*.c setlocal tags+=~/.vim/tags/usr_local_include
-au BufRead,BufNewFile *.py setlocal tags+=~/.vim/tags/python
-" c autotidy by indent
-autocmd FileType c :set equalprg=indent
-" Folding : http://vim.wikia.com/wiki/Syntax-based_folding see comment by Ostrygen
-au FileType cs set omnifunc=syntaxcomplete#Complete
-au FileType cs set foldmethod=marker
-au FileType cs set foldmarker={,}
-au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
-au FileType cs set foldlevelstart=2
-" Quickfix mode: command line msbuild error format
-au FileType cs set errorformat=\ %#%f(%l\\\,%c):\ error\ CS%n:\ %m
-
 "------------------------------------------------------------------------------
 " vim-airline
 "------------------------------------------------------------------------------
@@ -310,7 +290,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 "------------------------------------------------------------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|(bower_components|node_modules))$'
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|(bower_components|node_modules|__pycache__))$'
 
 "------------------------------------------------------------------------------
 " tagbar
@@ -327,9 +307,11 @@ let NERDTreeDirArrows = 1
 "------------------------------------------------------------------------------
 " syntastic
 "------------------------------------------------------------------------------
-""let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_python_python_exec = '/usr/local/bin/python3'
+let g:syntastic_ignore_files = ['\.py$']
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_python_checkers = ['python']
+let g:syntastic_python_checkers = ['flake8']
 
 "------------------------------------------------------------------------------
 " YouCompleteMe
@@ -337,3 +319,21 @@ let g:syntastic_python_checkers = ['python']
 let g:ycm_complete_in_comments = 1
 set completeopt-=preview
 let g:ycm_seed_identifiers_with_syntax = 1
+
+"------------------------------------------------------------------------------
+" Python-mode
+"------------------------------------------------------------------------------
+"let g:pymode = 0
+let g:pymode_python = 'python3'
+let g:pymode_rope_completion_bind = '<C-k>'
+let g:pymode_rope_goto_definition_bind = "<C-]>"
+let g:pymode_lint_checkers = ['python', 'pyflakes', 'pep8']
+
+
+"------------------------------------------------------------------------------
+" jedi-vim
+"------------------------------------------------------------------------------
+let g:jedi#force_py_version = 3
+let g:jedi#use_splits_not_buffers = "top"
+let g:jedi#goto_definitions_command = "<C-]>"
+let g:jedi#completions_command = "<C-k>"
