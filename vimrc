@@ -3,58 +3,33 @@
 
 let $LANG = 'en'
 set langmenu=en     "set menu's language of gvim. no spaces beside '='
+set nocompatible    " be iMproved
 
-"------------------------------------------------------------------------------
-" Install vundle automatically
-" http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/
-"------------------------------------------------------------------------------
-let iCanHazVundle=1
-if has("unix")
-    let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
-elseif has("win32")
-    let vundle_readme=expand('~/vimfiles/bundle/Vundle.vim/README.md')
-endif
-if !filereadable(vundle_readme)
-    echo "Installing Vundle.."
-    echo ""
-    if has("unix")
-        silent !mkdir -p ~/.vim/bundle
-        !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    elseif has("win32")
-        silent !mkdir \%USERPROFILE\%\vimfiles\bundle
-        !git clone https://github.com/gmarik/Vundle.vim.git \%USERPROFILE\%/vimfiles/bundle/Vundle.vim
-    endif
-    let iCanHazVundle=0
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
 "------------------------------------------------------------------------------
-" Vundle setting.
-" https://github.com/gmarik/Vundle.vim
+" vim-plug setting
+" https://github.com/junegunn/vim-plug
 "------------------------------------------------------------------------------
-set nocompatible               " be iMproved
-filetype off                   " required!
 
-" set the runtime path to include Vundle and initialize
-if has("unix")
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
-else
-    set rtp+=~/vimfiles/bundle/Vundle.vim/
-    let path='~/vimfiles/bundle'
-    call vundle#begin(path)
-endif
+call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plug 'gmarik/Vundle.vim'
 
 " Visually displaying indent levels in Vim
-"Plugin 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " File system explorer
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " Syntax checking for Vim
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 " A fast, as-you-type, fuzzy-search code completion engine
 " no official windows support
@@ -66,69 +41,52 @@ Plugin 'scrooloose/syntastic'
 "endif
 
 " Source code tag browser
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
 " Lean and mean status/tabline for Vim that's light as air
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Motion enhancement
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 
 " Git wrapper for Vim
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Solarized colorscheme
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
 " Tools and environment to make Vim superb for developing with Node.js.
-Plugin 'moll/vim-node'
+Plug 'moll/vim-node'
 
 " Insert mode auto-completion for quotes, parens, brackets, etc.
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 
 " Vim syntax file for Docker's Dockerfile and snippets for snipMate.
-Plugin 'ekalinin/Dockerfile.vim'
+Plug 'ekalinin/Dockerfile.vim'
 
 " Search tool
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 
 " Vim as Python IDE
-Plugin 'klen/python-mode'
+Plug 'klen/python-mode'
+
+" Speed up Vim by updating folds only when called-for
+Plug 'Konfekt/FastFold'
 
 " VIM binding to the autocompletion library Jedi
-" Plugin 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 
 " To comply with PEP8
-" Plugin 'hynek/vim-python-pep8-indent'
+Plug 'hynek/vim-python-pep8-indent'
 
+" Base16 for Vim
+Plug 'chriskempson/base16-vim'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-"------------------------------------------------------------------------------
-" Install plugins automatically
-"------------------------------------------------------------------------------
-if iCanHazVundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :PluginInstall
-    :qall
-endif
+call plug#end()
 
 "------------------------------------------------------------------------------
 " General Settings
@@ -198,7 +156,9 @@ set clipboard=unnamed
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-colorscheme solarized
+"colorscheme solarized
+let base16colorspace=256  " Access colors present in 256 colorspace"
+colorscheme base16-default
 
 if has("gui_running")
     if has("gui_gtk2")
@@ -266,7 +226,8 @@ endif
 "------------------------------------------------------------------------------
 " vim-airline
 "------------------------------------------------------------------------------
-let g:airline_theme = 'solarized'
+"let g:airline_theme = 'solarized'
+let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
@@ -323,12 +284,12 @@ let g:ycm_seed_identifiers_with_syntax = 1
 "------------------------------------------------------------------------------
 " Python-mode
 "------------------------------------------------------------------------------
-"let g:pymode = 0
 let g:pymode_python = 'python3'
-let g:pymode_rope_completion_bind = '<C-k>'
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
+"let g:pymode_rope_completion_bind = '<C-k>'
 let g:pymode_rope_goto_definition_bind = "<C-]>"
 let g:pymode_lint_checkers = ['python', 'pyflakes', 'pep8']
-
 
 "------------------------------------------------------------------------------
 " jedi-vim
