@@ -85,6 +85,9 @@ Plug 'hynek/vim-python-pep8-indent'
 " Base16 for Vim
 Plug 'chriskempson/base16-vim'
 
+" Theme repository for vim-airline
+Plug 'vim-airline/vim-airline-themes'
+
 " All of your Plugins must be added before the following line
 call plug#end()
 
@@ -227,7 +230,7 @@ endif
 " vim-airline
 "------------------------------------------------------------------------------
 "let g:airline_theme = 'solarized'
-let g:airline_theme = 'base16'
+let g:airline_theme = 'base16color'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
