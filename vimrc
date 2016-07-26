@@ -50,7 +50,7 @@ Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Motion enhancement
-Plug 'Lokaltog/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
 " Git wrapper for Vim
 Plug 'tpope/vim-fugitive'
