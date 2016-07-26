@@ -161,7 +161,7 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 "colorscheme solarized
 let base16colorspace=256  " Access colors present in 256 colorspace"
-colorscheme base16-default
+colorscheme base16-default-dark
 
 if has("gui_running")
     if has("gui_gtk2")
