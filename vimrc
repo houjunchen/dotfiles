@@ -88,6 +88,9 @@ Plug 'chriskempson/base16-vim'
 " Theme repository for vim-airline
 Plug 'vim-airline/vim-airline-themes'
 
+" JavaScript bundle for vim
+Plug 'pangloss/vim-javascript'
+
 " All of your Plugins must be added before the following line
 call plug#end()
 
