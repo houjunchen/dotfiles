@@ -88,8 +88,11 @@ Plug 'chriskempson/base16-vim'
 " Theme repository for vim-airline
 Plug 'vim-airline/vim-airline-themes'
 
-" JavaScript bundle for vim
-Plug 'pangloss/vim-javascript'
+" Yet Another JavaScript Syntax file for Vim
+Plug 'othree/yajs.vim'
+
+" A better JSON for Vim
+Plug 'elzr/vim-json'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -157,6 +160,14 @@ set t_vb=
 
 set encoding=utf-8
 set clipboard=unnamed
+
+autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
+autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
+autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
+autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 
 " change cursor shape for insert mode
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
