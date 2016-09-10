@@ -142,7 +142,7 @@ set incsearch
 set laststatus=2
 set cursorline
 set backspace=2
-set colorcolumn=80
+set colorcolumn=120
 set wildmenu
 set cpo-=<
 set wcm=<C-Z>
