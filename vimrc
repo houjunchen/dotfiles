@@ -32,7 +32,10 @@ Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 
 " Lean and mean status/tabline for Vim that's light as air
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+
+" Theme repository for vim-airline
+Plug 'vim-airline/vim-airline-themes'
 
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim
 Plug 'ctrlpvim/ctrlp.vim'
@@ -72,9 +75,6 @@ Plug 'hynek/vim-python-pep8-indent'
 
 " Base16 for Vim
 Plug 'chriskempson/base16-vim'
-
-" Theme repository for vim-airline
-Plug 'vim-airline/vim-airline-themes'
 
 " Yet Another JavaScript Syntax file for Vim
 Plug 'othree/yajs.vim'
