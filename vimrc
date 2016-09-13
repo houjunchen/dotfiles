@@ -19,9 +19,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plug 'gmarik/Vundle.vim'
-
 " Visually displaying indent levels in Vim
 Plug 'nathanaelkane/vim-indent-guides'
 
@@ -30,15 +27,6 @@ Plug 'scrooloose/nerdtree'
 
 " Syntax checking for Vim
 Plug 'scrooloose/syntastic'
-
-" A fast, as-you-type, fuzzy-search code completion engine
-" no official windows support
-" Compiling YCM wit semantic support for C-family languages:
-"   cd ~/.vim/bundle/YouCompleteMe/
-"   ./install.sh --clang-completer
-"if !has("win32")
-"    Plugin 'Valloric/YouCompleteMe'
-"endif
 
 " Source code tag browser
 Plug 'majutsushi/tagbar'
