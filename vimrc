@@ -85,6 +85,9 @@ Plug 'elzr/vim-json'
 " Prefer local repo install of eslint over global install with syntastic
 Plug 'mtscout6/syntastic-local-eslint.vim'
 
+" Vim syntax plugin for Ansible 2.0
+Plug 'pearofducks/ansible-vim'
+
 " All of your Plugins must be added before the following line
 call plug#end()
 
