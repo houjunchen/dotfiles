@@ -88,6 +88,9 @@ Plug 'mtscout6/syntastic-local-eslint.vim'
 " Vim syntax plugin for Ansible 2.0
 Plug 'pearofducks/ansible-vim'
 
+" Golang support for Vim
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+
 " All of your Plugins must be added before the following line
 call plug#end()
 
@@ -290,6 +293,8 @@ let g:syntastic_error_symbol = '❌'
 let g:syntastic_style_error_symbol = '⁉️'
 let g:syntastic_warning_symbol = '⚠️'
 let g:syntastic_style_warning_symbol = '💩'
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 "------------------------------------------------------------------------------
 " YouCompleteMe
