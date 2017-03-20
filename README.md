@@ -8,26 +8,62 @@ Vim and zsh config files
 git clone https://github.com/houjunchen/dotfiles.git
 ```
 
-### Vim Setup
+### Install New Font
 
-1. Requirement
-
-    1. [Powerline-fonts](https://github.com/powerline/fonts): used by [vim-airline-theme](https://github.com/vim-airline/vim-airline-themes)
-
-2. Either copy or make a symbolic link from `vimrc` to `~/.vimrc`
-
-3. Install Plugins
-
-    Launch `vim` and run `:PlugInstall`
+Install one of the [Powerline-fonts](https://github.com/powerline/fonts) or simpily use the one in the `fonts` directory.
 
 ### Zsh Setup
 
 1. Requirement
    1. Zsh plugin manager: [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+
+      ```shell
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+      ```
+
 2. Custom zsh plugins (should be installed manully via `git clone`)
    1. [solarized-powerline](https://github.com/houjunchen/solarized-powerline)
+
+      ```shell
+      git clone https://github.com/houjunchen/solarized-powerline.git
+      cd solarized-powerline
+      cp solarized-powerline.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/
+      ```
+
    2. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+
+        ```shell
+        git clone git://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+        ```
+
    3. [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+
+        ```shell
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+        ```
+
    4. [zsh-vim-mode](https://github.com/houjunchen/zsh-vim-mode)
-3. Changing default ANSI color: [base16-shell](https://github.com/chriskempson/base16-shell)
+
+        ```shell
+        git clone git://github.com/houjunchen/zsh-vim-mode.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vim-mode
+        ```
+
+3. Change default ANSI color: [base16-shell](https://github.com/chriskempson/base16-shell)
+
+   ```shell
+   git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+   ```
+
+   * Start a new shell and then type base16 (tab completion)
+
 4. Either copy or make a symbolic link from `zshrc` to `~/.zshrc`
+
+### Vim Setup
+
+1. Either copy or make a symbolic link from `vimrc` to `~/.vimrc`
+
+2. Install Plugins
+
+   ```shell
+    Launch `vim` and run `:PlugInstall`
+   ```
