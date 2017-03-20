@@ -2,25 +2,19 @@
 
 Vim and zsh config files
 
+### Clone this repo
+
+```shell
+git clone https://github.com/houjunchen/dotfiles.git
+```
+
 ### Vim Setup
 
 1. Requirement
 
     1. [Powerline-fonts](https://github.com/powerline/fonts): used by [vim-airline-theme](https://github.com/vim-airline/vim-airline-themes)
 
-2. Setup
-
-    1. Check out vimrc
-
-        ```shell
-        git clone https://github.com/houjunchen/vimrc.git ~/.vim
-        ```
-
-    2. Make a symbolic link
-
-        ```shell
-        ln -s ~/.vim/vimrc ~/.vimrc
-        ```
+2. Either copy or make a symbolic link from `vimrc` to `~/.vimrc`
 
 3. Install Plugins
 
