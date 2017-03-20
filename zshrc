@@ -92,8 +92,9 @@ export LESS="-RFX"
 export SSH_KEY_DIR=$HOME/.vault/aws
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# start a new shell and then type base16 (tab completion)
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # python
 export WORKON_HOME=$HOME/.virtualenvs
