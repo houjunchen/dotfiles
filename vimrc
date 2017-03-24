@@ -320,3 +320,11 @@ let g:jedi#force_py_version = 3
 let g:jedi#use_splits_not_buffers = "top"
 let g:jedi#goto_definitions_command = "<C-]>"
 let g:jedi#completions_command = "<C-k>"
+
+"------------------------------------------------------------------------------
+" vim-go
+"------------------------------------------------------------------------------
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
