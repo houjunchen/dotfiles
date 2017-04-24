@@ -88,6 +88,21 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 export LESS="-RFX"
 
+# Update keybinding for history-substring-search
+if [[ -n $HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND ]]; then
+    bindkey -M vicmd 'k' history-substring-search-up
+    bindkey -M vicmd 'j' history-substring-search-down
+
+    bindkey '^p' history-substring-search-up
+    bindkey '^n' history-substring-search-down
+else
+    bindkey -M vicmd 'k' up-history
+    bindkey -M vicmd 'j' down-history
+
+    bindkey '^p' up-history
+    bindkey '^n' down-history
+fi
+
 # AWS vault
 export SSH_KEY_DIR=$HOME/.vault/aws
 
