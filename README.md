@@ -1,6 +1,6 @@
 ## [dotfiles](https://github.com/houjunchen/dotfiles)
 
-Vim and zsh config files
+Vim and zsh config files and their compact version (no additional font required).
 
 ### Clone this repo
 
