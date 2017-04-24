@@ -1,0 +1,208 @@
+" VIM setting
+" Abner Chen
+
+let $LANG = 'en'
+set langmenu=en     "set menu's language of gvim. no spaces beside '='
+set nocompatible    " be iMproved
+
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+"------------------------------------------------------------------------------
+" vim-plug setting
+" https://github.com/junegunn/vim-plug
+"------------------------------------------------------------------------------
+
+call plug#begin('~/.vim/plugged')
+
+" Lean and mean status/tabline for Vim that's light as air
+Plug 'vim-airline/vim-airline'
+
+" Full path fuzzy file, buffer, mru, tag, ... finder for Vim
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Motion enhancement
+Plug 'easymotion/vim-easymotion'
+
+" Git wrapper for Vim
+Plug 'tpope/vim-fugitive'
+
+" Golang support for Vim
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+
+" All of your Plugins must be added before the following line
+call plug#end()
+
+"------------------------------------------------------------------------------
+" General Settings
+"------------------------------------------------------------------------------
+
+filetype off          " necessary to make ftdetect work on Linux
+syntax on
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+
+set nocompatible      " not compatible with the old-fashion vi mode
+" Set mouse
+set mouse=a
+syntax on
+filetype on
+set autowrite
+set number
+" Show command line
+set showcmd
+set showmode
+set lcs=tab:>-,trail:-
+set list
+
+" Backups
+set nobackup
+set noswapfile
+
+" Always show current position
+set ruler
+
+set expandtab
+set smarttab
+set tabstop=4
+set shiftwidth=4
+set autoindent
+set smartindent
+set wrap
+
+" Highlight search results
+set hlsearch
+" Makes search act like search in modern browsers
+set incsearch
+set laststatus=2
+set cursorline
+set backspace=2
+set colorcolumn=120
+set wildmenu
+set cpo-=<
+set wcm=<C-Z>
+set foldmethod=indent
+set foldnestmax=5
+set formatoptions=mtcql
+set scrolloff=2
+set t_Co=256
+set background=dark
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+
+set encoding=utf-8
+set clipboard=unnamed
+
+autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
+autocmd FileType coffee,javascript,json,yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
+autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
+autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+
+" change cursor shape for insert mode
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+"colorscheme solarized
+let base16colorspace=256  " Access colors present in 256 colorspace"
+colorscheme desert
+
+if has("gui_running")
+    if has("gui_gtk2")
+        set guifont=Inconsolata\ 12
+    elseif has("gui_macvim")
+        set guifont=Source_Code_Pro_Medium:h14
+    elseif has("gui_win32")
+        set guifont=Source_Code_Pro_Medium:h12:cANSI
+    endif
+endif
+
+"------------------------------------------------------------------------------
+" Key Mapping
+"
+" Commands                        Mode
+" --------                        ----
+" nmap, nnoremap, nunmap          Normal mode
+" imap, inoremap, iunmap          Insert and Replace mode
+" vmap, vnoremap, vunmap          Visual and Select mode
+" xmap, xnoremap, xunmap          Visual mode
+" smap, snoremap, sunmap          Select mode
+" cmap, cnoremap, cunmap          Command-line mode
+" omap, onoremap, ounmap          Operator pending mode
+"------------------------------------------------------------------------------
+map tn              :tabnext<CR>
+map tp              :tabprev<CR>
+map te              :tabnew 
+map tc              :tabclose<CR>
+map vs              :vsplit 
+
+nmap <Tab>          v>
+nmap <S-tab>        v<
+nnoremap <A-J>      :m+<CR>==
+nnoremap <A-K>      :m-2<CR>==
+nnoremap <Space>    za
+
+inoremap <A-J>      <Esc>:m+<CR>==gi
+inoremap <A-K>      <Esc>:m-2<CR>==gi
+
+vmap <Tab>          >gv
+vmap <S-Tab>        <gv
+vnoremap <A-J>      :m'>+<CR>gv=gv
+vnoremap <A-K>      :m-2<CR>gv=gv
+vnoremap <Space>    zf
+
+cmap <C-A>          <Home>
+cmap <C-E>          <End>
+cnoremap <C-B>      <Left>
+cnoremap <C-D>      <Del>
+cnoremap <C-F>      <Right>
+cnoremap <C-N>      <Down>
+cnoremap <C-P>      <Up>
+cnoremap <Esc><C-B> <S-Left>
+cnoremap <Esc><C-F> <S-Right>
+
+if has("gui_running")
+    " paste
+    map <C-V>       "+gP
+    " cut
+    vnoremap <C-X>  "+x
+    " copy
+    vnoremap <C-C>  "+y
+endif
+
+"------------------------------------------------------------------------------
+" vim-airline
+"------------------------------------------------------------------------------
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+"------------------------------------------------------------------------------
+" CtrlP
+"------------------------------------------------------------------------------
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|(vendor|bower_components|node_modules|__pycache__))$'
+
+"------------------------------------------------------------------------------
+" vim-go
+"------------------------------------------------------------------------------
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_fmt_experimental = 1
