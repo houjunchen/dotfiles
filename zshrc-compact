@@ -102,34 +102,3 @@ else
     bindkey '^p' up-history
     bindkey '^n' down-history
 fi
-
-# AWS vault
-export SSH_KEY_DIR=$HOME/.vault/aws
-
-# Base16 Shell
-# start a new shell and then type base16 (tab completion)
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-# python
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
-
-# nodejs
-# https://github.com/robbyrussell/oh-my-zsh/issues/5327#issuecomment-248836398
-# https://github.com/creationix/nvm/issues/539#issuecomment-245791291
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use # This loads nvm
-alias node='unalias node ; unalias npm ; nvm use default ; node $@'
-alias npm='unalias node ; unalias npm ; nvm use default ; npm $@'
-
-# go
-export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME/Projects/03-go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
-# ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
