@@ -82,6 +82,7 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="ls -hGF"
 alias ll="ls -AlF"
+alias ta="tig --all"
 
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
