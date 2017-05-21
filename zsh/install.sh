@@ -48,4 +48,4 @@ cat zshrc | sed s"/abnerchen/${USERNAME}/g" > $HOME/.zshrc
 
 # Install base16 colorscheme for zsh
 printf "${BLUE}Installing colorscheme base16${NORMAL}\n";
-#git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
