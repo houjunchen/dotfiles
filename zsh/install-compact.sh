@@ -40,4 +40,4 @@ fi
 # Patch zshrc
 USERNAME=`who am i | cut -d' ' -f 1`
 printf "${BLUE}Adding zshrc to ~/.zshrc and patching its DEFAULT_USER to ${USERNAME}${NORMAL}\n";
-cat zshrc | sed s"/abnerchen/${USERNAME}/g" > $HOME/.zshrc
+cat zshrc-compact | sed s"/abnerchen/${USERNAME}/g" > $HOME/.zshrc
