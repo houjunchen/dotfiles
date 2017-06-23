@@ -1,4 +1,5 @@
+PWD=`pwd`
 # Link vimrc to HOME
-ln -s vimrc $HOME/.vimrc
+ln -sf ${PWD}/vimrc ${HOME}/.vimrc
 # Install plugins
 vim +PlugInstall +qall
