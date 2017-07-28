@@ -275,7 +275,7 @@ nnoremap <silent> <F9> :TagbarToggle<CR>
 "------------------------------------------------------------------------------
 " nerdtree
 "------------------------------------------------------------------------------
-map <F8> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinPos = "left"
 let NERDTreeDirArrows = 1
 
