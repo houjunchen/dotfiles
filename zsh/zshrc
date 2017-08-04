@@ -83,6 +83,7 @@ export EDITOR='vim'
 alias ls="ls -hGF"
 alias ll="ls -AlF"
 alias ta="tig --all"
+alias e="exa -alh"
 
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
