@@ -31,6 +31,9 @@ Plug 'easymotion/vim-easymotion'
 " Git wrapper for Vim
 Plug 'tpope/vim-fugitive'
 
+" Insert mode auto-completion for quotes, parens, brackets, etc.
+Plug 'Raimondi/delimitMate'
+
 " Golang support for Vim
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
