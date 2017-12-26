@@ -208,6 +208,10 @@ nmap <S-tab>        v<
 nnoremap <A-J>      :m+<CR>==
 nnoremap <A-K>      :m-2<CR>==
 nnoremap <Space>    za
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 inoremap <A-J>      <Esc>:m+<CR>==gi
 inoremap <A-K>      <Esc>:m-2<CR>==gi
