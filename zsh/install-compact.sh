@@ -30,6 +30,10 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 printf "${BLUE}Installing plugin zsh-vim-mode${NORMAL}\n"
 git clone git://github.com/houjunchen/zsh-vim-mode.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vim-mode
 
+# Install zsh theme
+printf "${BLUE}Installing theme bullet-train${NORMAL}\n"
+curl -o ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/bullet-train.zsh-theme https://raw.githubusercontent.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme
+
 # Backup original .zshrc
 printf "${BLUE}Looking for an existing zsh config${NORMAL}\n"
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
