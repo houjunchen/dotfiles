@@ -32,6 +32,7 @@ git clone git://github.com/houjunchen/zsh-vim-mode.git ${ZSH_CUSTOM:-~/.oh-my-zs
 
 # Install zsh theme
 printf "${BLUE}Installing theme bullet-train${NORMAL}\n"
+mkdir ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes
 curl -o ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/bullet-train.zsh-theme https://raw.githubusercontent.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme
 
 # Backup original .zshrc

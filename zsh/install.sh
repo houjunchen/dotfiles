@@ -32,6 +32,7 @@ git clone git://github.com/houjunchen/zsh-vim-mode.git ${ZSH_CUSTOM:-~/.oh-my-zs
 
 # Install zsh theme
 printf "${BLUE}Installing theme solarized-powerline${NORMAL}\n"
+mkdir ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes
 curl -o ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/solarized-powerline.zsh-theme https://raw.githubusercontent.com/houjunchen/solarized-powerline/master/solarized-powerline.zsh-theme
 
 # Backup original .zshrc
