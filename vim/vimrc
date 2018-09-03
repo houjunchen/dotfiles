@@ -62,7 +62,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'mileszs/ack.vim'
 
 " Vim as Python IDE
-Plug 'klen/python-mode'
+Plug 'python-mode/python-mode'
 
 " Speed up Vim by updating folds only when called-for
 Plug 'Konfekt/FastFold'
