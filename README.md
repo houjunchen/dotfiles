@@ -22,12 +22,10 @@ Install one of the [Powerline-fonts](https://github.com/powerline/fonts) or simp
       ```
 
 2. Custom zsh plugins (should be installed manully via `git clone`)
-   1. [solarized-powerline](https://github.com/houjunchen/solarized-powerline)
+   1. [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
       ```shell
-      git clone https://github.com/houjunchen/solarized-powerline.git
-      cd solarized-powerline
-      cp solarized-powerline.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/
+      git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
       ```
 
    2. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
