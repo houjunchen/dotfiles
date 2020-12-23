@@ -31,9 +31,9 @@ printf "${BLUE}Installing plugin zsh-vim-mode${NORMAL}\n"
 git clone git://github.com/houjunchen/zsh-vim-mode.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vim-mode
 
 # Install zsh theme
-printf "${BLUE}Installing theme solarized-powerline${NORMAL}\n"
+printf "${BLUE}Installing theme Powerlevel10k${NORMAL}\n"
 mkdir ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes
-curl -o ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/solarized-powerline.zsh-theme https://raw.githubusercontent.com/houjunchen/solarized-powerline/master/solarized-powerline.zsh-theme
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # Backup original .zshrc
 printf "${BLUE}Looking for an existing zsh config${NORMAL}\n"
