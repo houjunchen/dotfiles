@@ -76,6 +76,9 @@ Plug 'hynek/vim-python-pep8-indent'
 " Base16 for Vim
 Plug 'chriskempson/base16-vim'
 
+" A color scheme based on Google's Material Design palette
+Plug 'tyrannicaltoucan/vim-quantum'
+
 " Yet Another JavaScript Syntax file for Vim
 Plug 'othree/yajs.vim'
 
@@ -170,9 +173,12 @@ autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 tex
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-"colorscheme solarized
 let base16colorspace=256  " Access colors present in 256 colorspace"
-colorscheme base16-default-dark
+
+let g:quantum_black=1
+set background=dark
+set termguicolors
+colorscheme quantum
 
 if has("gui_running")
     if has("gui_gtk2")
