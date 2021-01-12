@@ -49,9 +49,6 @@ Plug 'tpope/vim-fugitive'
 " Solarized colorscheme
 Plug 'altercation/vim-colors-solarized'
 
-" Tools and environment to make Vim superb for developing with Node.js.
-Plug 'moll/vim-node'
-
 " Insert mode auto-completion for quotes, parens, brackets, etc.
 Plug 'Raimondi/delimitMate'
 
@@ -59,7 +56,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'ekalinin/Dockerfile.vim'
 
 " Search tool
-Plug 'mileszs/ack.vim'
+Plug 'jremmen/vim-ripgrep'
 
 " Vim as Python IDE
 Plug 'python-mode/python-mode'
@@ -88,11 +85,11 @@ Plug 'elzr/vim-json'
 " Prefer local repo install of eslint over global install with syntastic
 Plug 'mtscout6/syntastic-local-eslint.vim'
 
-" Vim syntax plugin for Ansible 2.0
-Plug 'pearofducks/ansible-vim'
-
 " Golang support for Vim
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+
+" This Vim plugin provides GraphQL file detection, syntax highlighting, and indentation.
+Plug 'jparise/vim-graphql'
 
 " All of your Plugins must be added before the following line
 call plug#end()
