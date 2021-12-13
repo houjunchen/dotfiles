@@ -55,11 +55,8 @@ Plug 'Raimondi/delimitMate'
 " Vim syntax file for Docker's Dockerfile and snippets for snipMate.
 Plug 'ekalinin/Dockerfile.vim'
 
-" Search tool
-Plug 'jremmen/vim-ripgrep'
-
 " Vim as Python IDE
-Plug 'python-mode/python-mode'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " Speed up Vim by updating folds only when called-for
 Plug 'Konfekt/FastFold'
@@ -82,14 +79,21 @@ Plug 'othree/yajs.vim'
 " A better JSON for Vim
 Plug 'elzr/vim-json'
 
-" Prefer local repo install of eslint over global install with syntastic
-Plug 'mtscout6/syntastic-local-eslint.vim'
-
 " Golang support for Vim
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 " This Vim plugin provides GraphQL file detection, syntax highlighting, and indentation.
 Plug 'jparise/vim-graphql'
+
+" Semshi provides semantic highlighting for Python in Neovim.
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+
+" This plugin is used for displaying thin vertical lines at each indentation level for code indented with spaces.
+Plug 'Yggdroot/indentLine'
+
+" https://github.com/junegunn/fzf.vim
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -320,6 +324,7 @@ let g:pymode_rope_complete_on_dot = 0
 "let g:pymode_rope_completion_bind = '<C-k>'
 let g:pymode_rope_goto_definition_bind = "<C-]>"
 let g:pymode_lint_checkers = ['python', 'pyflakes', 'pep8']
+let g:pymode_lint_ignore = ["E501", "W"]
 
 "------------------------------------------------------------------------------
 " jedi-vim
@@ -338,7 +343,11 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_fmt_experimental = 1
 let g:go_fmt_command = "goimports"
+let g:go_fmt_options = {
+    \ 'gofmt': '-s',
+    \ }
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet']
 let g:go_metalinter_deadline = '5s'
+let g:go_addtags_transform = 'camelcase'
