@@ -1,22 +1,20 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-	name = Abner Chen
-	email = houjunchen@gmail.com
+    name = Abner Chen
+    email = houjunchen@gmail.com
 [core]
     pager = delta
 [color]
-	ui = true
+    ui = true
 [delta]
-    plus-color = "#012800"
-    minus-color = "#340001"
-    #syntax-theme = Monokai Extended
+    plus-style = syntax "#012800"
+    minus-style = normal "#012800"
     syntax-theme = base16-256
     line-numbers = true
-    #side-by-side = true
 [diff]
     colorMoved = default
 [interactive]
     diffFilter = delta --color-only
 [pull]
-	rebase = true
+    rebase = true
