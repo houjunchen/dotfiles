@@ -10,7 +10,7 @@ git clone https://github.com/houjunchen/dotfiles.git
 
 ### Install New Font
 
-Install one of the [Powerline-fonts](https://github.com/powerline/fonts) or simpily use the one in the `fonts` directory.
+Install one of the [Nerd Fonts](https://www.nerdfonts.com/).
 
 ### Zsh Setup
 
@@ -55,13 +55,3 @@ Install one of the [Powerline-fonts](https://github.com/powerline/fonts) or simp
    * Start a new shell and then type base16 (tab completion)
 
 4. Either copy or make a symbolic link from `zshrc` to `~/.zshrc`
-
-### Vim Setup
-
-1. Either copy or make a symbolic link from `vimrc` to `~/.vimrc`
-
-2. Install Plugins
-
-   ```shell
-    Launch `vim` and run `:PlugInstall`
-   ```
