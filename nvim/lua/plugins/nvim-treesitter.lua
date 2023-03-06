@@ -29,6 +29,7 @@ return {
         "markdown",
         "markdown_inline",
         "python",
+        "solidity",
         "regex",
         "tsx",
         "typescript",

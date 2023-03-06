@@ -19,7 +19,7 @@ return {
           },
         },
         gopls = {},
-        solidity_ls = {},
+        solc = {},
       },
     },
   },
