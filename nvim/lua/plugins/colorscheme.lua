@@ -13,7 +13,6 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    tag = "v1.1.0",
     opts = {
       -- latte, frappe, macchiato, mocha
       flavour = "macchiato",

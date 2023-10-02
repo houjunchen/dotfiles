@@ -26,6 +26,7 @@ return {
         "lua",
         "javascript",
         "json",
+        "kdl",
         "markdown",
         "markdown_inline",
         "python",
