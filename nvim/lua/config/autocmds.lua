@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("FileType", {
   command = "setlocal shiftwidth=4 tabstop=4",
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "javascript",
-  command = "setlocal shiftwidth=4 tabstop=4",
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "javascript",
+--   command = "setlocal shiftwidth=4 tabstop=4",
+-- })
