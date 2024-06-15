@@ -9,8 +9,10 @@ return {
       { "<leader>fe", ":NvimTreeToggle<cr>", desc = "Toggle File Explorer" },
       { "<c-n>", ":NvimTreeToggle<cr>", desc = "Toggle File Explorer" },
     },
-    config = function()
-      require("nvim-tree").setup()
-    end,
+    opts = {
+      filters = {
+        dotfiles = false,
+      },
+    },
   },
 }

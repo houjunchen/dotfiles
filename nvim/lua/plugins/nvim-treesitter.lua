@@ -3,10 +3,6 @@ local function ts_disable(_, bufnr)
 end
 
 return {
-  { import = "lazyvim.plugins.extras.lang.typescript" },
-
-  { import = "lazyvim.plugins.extras.lang.json" },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
