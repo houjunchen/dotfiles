@@ -3,18 +3,33 @@
 # Please adapt and uncomment the following lines:
     name = Abner Chen
     email = houjunchen@gmail.com
-[core]
-    pager = delta
-[color]
-    ui = true
-[delta]
-    plus-style = syntax "#012800"
-    minus-style = normal "#012800"
-    syntax-theme = base16-256
-    line-numbers = true
-[diff]
-    colorMoved = default
-[interactive]
-    diffFilter = delta --color-only
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB9pr3JL0v2yjoVGgnVuKae3qsgr3fdLE3Q34otuMzAG
 [pull]
     rebase = true
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[color]
+	ui = true
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[init]
+	defaultBranch = main
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
