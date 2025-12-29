@@ -15,33 +15,15 @@ This is a personal dotfiles repository containing configuration files for:
 - **squirrel** - Rime input method (鼠鬚管) configuration for Traditional Chinese
 - **brew** - Homebrew package list
 
-## Installation Commands
+## Installation
 
-### Zsh Setup
 ```shell
-# Full installation (includes oh-my-zsh, plugins, themes)
-cd zsh && sh install.sh
-
-# Compact version (no additional fonts required)
-cd zsh && sh install-compact.sh
+make help     # Show available targets
+make all      # Install zsh, nvim, ghostty, git, tig
+make <target> # Install specific component
 ```
 
-### Vim Setup
-```shell
-# Links vimrc and installs plugins via vim-plug
-cd vim && sh install.sh
-```
-
-### Neovim Setup
-The nvim directory can be symlinked to `~/.config/nvim`. Uses LazyVim as the base configuration.
-
-### Ghostty Setup
-Symlink the ghostty directory to `~/.config/ghostty`.
-
-### Tig Setup
-```shell
-cd tig && sh install.sh
-```
+Available targets: `zsh`, `zsh-compact`, `vim`, `vim-compact`, `nvim`, `ghostty`, `git`, `tig`, `brew`
 
 ## Architecture Notes
 
