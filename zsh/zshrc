@@ -51,7 +51,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew git docker pip virtualenv zsh-autosuggestions zsh-syntax-highlighting history-substring-search zsh-vim-mode)
+plugins=(brew git docker zsh-autosuggestions zsh-syntax-highlighting history-substring-search zsh-vim-mode)
 
 # User configuration
 
@@ -87,7 +87,7 @@ export EDITOR='vim'
 alias ls="ls -hGF"
 alias ll="ls -AlF"
 alias ta="tig --all"
-alias e="exa -alh"
+alias e="eza -alh"
 
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -117,12 +117,6 @@ export SSH_KEY_DIR=$HOME/.vault/aws
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-# python
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
 
 # nodejs
 # https://github.com/robbyrussell/oh-my-zsh/issues/5327#issuecomment-248836398
