@@ -24,15 +24,15 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 # Install zsh plugins
 printf "${BLUE}Installing plugin zsh-autosuggestions${NORMAL}\n"
-git clone git://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 printf "${BLUE}Installing plugin zsh-syntax-highlighting${NORMAL}\n"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 printf "${BLUE}Installing plugin zsh-vim-mode${NORMAL}\n"
-git clone git://github.com/houjunchen/zsh-vim-mode.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vim-mode
+git clone https://github.com/houjunchen/zsh-vim-mode.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vim-mode
 
 # Install zsh theme
 printf "${BLUE}Installing theme bullet-train${NORMAL}\n"
-mkdir ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes
+mkdir -p ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes
 curl -o ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/bullet-train.zsh-theme https://raw.githubusercontent.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme
 
 # Backup original .zshrc
@@ -43,6 +43,6 @@ if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
 fi
 
 # Patch zshrc
-USERNAME=`who am i | cut -d' ' -f 1`
+USERNAME="${USER}"
 printf "${BLUE}Adding zshrc to ~/.zshrc and patching its DEFAULT_USER to ${USERNAME}${NORMAL}\n";
-cat zshrc-compact | sed s"/abnerchen/${USERNAME}/g" > $HOME/.zshrc
+sed "s/abnerchen/${USERNAME}/g" zshrc-compact > "$HOME/.zshrc"
