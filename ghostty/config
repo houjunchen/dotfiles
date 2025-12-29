@@ -1,0 +1,9 @@
+theme = Catppuccin Macchiato
+
+font-family = SauceCodePro Nerd Font Mono
+font-size = 14
+
+macos-titlebar-style=tabs
+
+working-directory=/Users/abnerchen/Projects
+keybind = shift+enter=text:\n

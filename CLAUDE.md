@@ -10,6 +10,7 @@ This is a personal dotfiles repository containing configuration files for:
 - **vim** - Traditional vim configuration with vim-plug
 - **git** - Git configuration
 - **tig** - Git TUI configuration
+- **ghostty** - Ghostty terminal configuration
 - **iterm2** - iTerm2 profile with base16 color scheme
 - **squirrel** - Rime input method (鼠鬚管) configuration for Traditional Chinese
 - **brew** - Homebrew package list
@@ -33,6 +34,9 @@ cd vim && sh install.sh
 
 ### Neovim Setup
 The nvim directory can be symlinked to `~/.config/nvim`. Uses LazyVim as the base configuration.
+
+### Ghostty Setup
+Symlink the ghostty directory to `~/.config/ghostty`.
 
 ### Tig Setup
 ```shell
