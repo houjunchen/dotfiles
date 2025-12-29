@@ -29,6 +29,8 @@ printf "${BLUE}Installing plugin zsh-syntax-highlighting${NORMAL}\n"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 printf "${BLUE}Installing plugin zsh-vim-mode${NORMAL}\n"
 git clone git://github.com/houjunchen/zsh-vim-mode.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vim-mode
+printf "${BLUE}Installing plugin fzf-tab${NORMAL}\n"
+git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
 
 # Install zsh theme
 printf "${BLUE}Installing theme Powerlevel10k${NORMAL}\n"
