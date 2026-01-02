@@ -1,9 +1,26 @@
 theme = Catppuccin Macchiato
-
 font-family = SauceCodePro Nerd Font Mono
 font-size = 14
 
-macos-titlebar-style=tabs
+macos-titlebar-style = tabs
+working-directory = /Users/abnerchen/Projects
 
-working-directory=/Users/abnerchen/Projects
+# Clipboard
+copy-on-select = true
+clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = true
+
+# Cursor
+cursor-click-to-move = true
+
+# Window
+window-padding-x = 4
+window-padding-y = 4
+window-save-state = always
+window-colorspace = display-p3
+
+# Scrollback
+scrollback-limit = 10000000
+
+# Keybindings
 keybind = shift+enter=text:\n
