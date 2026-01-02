@@ -1,6 +1,6 @@
 ## [dotfiles](https://github.com/houjunchen/dotfiles)
 
-Personal configuration files for zsh, neovim, vim, git, ghostty, tig, and more.
+Personal configuration files for zsh, neovim, vim, git, ghostty, zellij, tig, and more.
 
 ### Installation
 
@@ -14,12 +14,13 @@ Available targets:
 
 | Target | Description |
 |--------|-------------|
-| `make all` | Install zsh, nvim, ghostty, git, tig |
+| `make all` | Install zsh, nvim, ghostty, zellij, git, tig |
 | `make zsh` | Zsh with oh-my-zsh, powerlevel10k (requires [Nerd Fonts](https://www.nerdfonts.com/)) |
 | `make zsh-compact` | Zsh without font dependencies |
 | `make vim` | Vim with vim-plug |
 | `make nvim` | Neovim with LazyVim |
 | `make ghostty` | Ghostty terminal |
+| `make zellij` | Zellij terminal multiplexer |
 | `make git` | Git config |
 | `make tig` | Tig config |
 | `make brew` | Install Homebrew packages |

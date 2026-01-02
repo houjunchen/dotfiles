@@ -1,23 +1,24 @@
 DOTFILES := $(shell pwd)
 
-.PHONY: help all zsh zsh-compact vim vim-compact nvim ghostty git tig brew
+.PHONY: help all zsh zsh-compact vim vim-compact nvim ghostty zellij git tig brew
 
 help:
 	@echo "Usage: make <target>"
 	@echo ""
 	@echo "Targets:"
-	@echo "  all          Install all (zsh, nvim, ghostty, git, tig)"
+	@echo "  all          Install all (zsh, nvim, ghostty, zellij, git, tig)"
 	@echo "  zsh          Install zsh config (full, requires Nerd Fonts)"
 	@echo "  zsh-compact  Install zsh config (compact, no fonts required)"
 	@echo "  vim          Install vim config"
 	@echo "  vim-compact  Install vim config (compact)"
 	@echo "  nvim         Install neovim config (symlink)"
 	@echo "  ghostty      Install ghostty config (symlink)"
+	@echo "  zellij       Install zellij config (symlink)"
 	@echo "  git          Install git config (symlink)"
 	@echo "  tig          Install tig config"
 	@echo "  brew         Install homebrew packages"
 
-all: zsh nvim ghostty git tig
+all: zsh nvim ghostty zellij git tig
 
 zsh:
 	cd $(DOTFILES)/zsh && sh install.sh
@@ -49,6 +50,15 @@ ghostty:
 	fi
 	ln -sf $(DOTFILES)/ghostty $(HOME)/.config/ghostty
 	@echo "Ghostty config installed"
+
+zellij:
+	@mkdir -p $(HOME)/.config/zellij
+	@if [ -e $(HOME)/.config/zellij/config.kdl ]; then \
+		echo "Backing up existing zellij config to ~/.config/zellij/config.kdl.backup"; \
+		mv $(HOME)/.config/zellij/config.kdl $(HOME)/.config/zellij/config.kdl.backup; \
+	fi
+	ln -sf $(DOTFILES)/zellij/config.kdl $(HOME)/.config/zellij/config.kdl
+	@echo "Zellij config installed"
 
 git:
 	@if [ -e $(HOME)/.gitconfig ]; then \
