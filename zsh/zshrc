@@ -118,13 +118,10 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 
-# nodejs
-# https://github.com/robbyrussell/oh-my-zsh/issues/5327#issuecomment-248836398
-# https://github.com/creationix/nvm/issues/539#issuecomment-245791291
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use # This loads nvm
-alias node='unalias node ; unalias npm ; nvm use default ; node $@'
-alias npm='unalias node ; unalias npm ; nvm use default ; npm $@'
+# fnm (Fast Node Manager) — auto-switches on cd into dirs with .nvmrc / .node-version
+if command -v fnm >/dev/null 2>&1; then
+  eval "$(fnm env --shell zsh --use-on-cd)"
+fi
 
 # go
 export GOROOT=/usr/local/opt/go/libexec
